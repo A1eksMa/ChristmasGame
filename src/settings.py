@@ -11,6 +11,8 @@ WIDTH = 1200  # ширина игрового окна
 HEIGHT = 780 # высота игрового окна
 FPS = 60 # частота кадров в секунду
 
+FLOOR_WIDTH = 1020
+FLOOR_HEIGHT = 180
 
 class Colors(Enum):
     BLACK = (0, 0, 0)

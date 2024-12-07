@@ -8,7 +8,8 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.Surface((60, 60))
         self.image.fill(Colors.RED.value)
         self.rect = self.image.get_rect()
-        self.rect.center = (100,100)
+        self.rect.x = (WIDTH-FLOOR_WIDTH)/2
+        self.rect.y = 4*FLOOR_HEIGHT - 60
         self.speedy = 0
         self.speedx = 0
         self.step = 6

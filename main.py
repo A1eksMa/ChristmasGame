@@ -13,6 +13,8 @@ home = pygame.sprite.Group()
 
 for floor in Home(3).floors:
     home.add(floor)
+    for room in floor.rooms:
+        home.add(room)
 
 santa = Santa()
 sprites.add(santa)
