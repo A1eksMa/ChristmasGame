@@ -9,10 +9,10 @@ class Home(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.floors = []
         for i in range(n):
-            color = BLUE
+            color = random.choice(colors)
             x = (WIDTH-FLOOR_WIDTH)/2
             y = FLOOR_HEIGHT*(i+1)
-            self.floors.append(Floor(random.choice(colors), x, y))
+            self.floors.append(Floor(color, x, y))
 
 class Floor(pygame.sprite.Sprite):
     def __init__(self, color, x, y):

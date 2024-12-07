@@ -34,7 +34,7 @@ while run:
     sprites.update()
 
     # Рендеринг
-    screen.fill(BLACK)
+    screen.fill(Colors.BLACK.value)
     home.draw(screen)
     sprites.draw(screen)
 

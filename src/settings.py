@@ -20,4 +20,4 @@ class Colors(Enum):
     GREEN = (0, 255, 0)
     BLUE = (0, 0, 255)
 
-colors = list(Colors.__members__.values())
+colors = [color.value for color in Colors]
