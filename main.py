@@ -11,12 +11,8 @@ clock = pygame.time.Clock()
 sprites = pygame.sprite.Group()
 home = pygame.sprite.Group()
 
-floor_1 = Floor(BLUE, (WIDTH-FLOOR_WIDTH)/2, FLOOR_HEIGHT*1)
-floor_2 = Floor(GRAY, (WIDTH-FLOOR_WIDTH)/2, FLOOR_HEIGHT*2)
-floor_3 = Floor(BLUE, (WIDTH-FLOOR_WIDTH)/2, FLOOR_HEIGHT*3)
-home.add(floor_1)
-home.add(floor_2)
-home.add(floor_3)
+for floor in Home(3).floors:
+    home.add(floor)
 
 santa = Santa()
 sprites.add(santa)

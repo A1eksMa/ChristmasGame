@@ -1,4 +1,5 @@
 from .settings import *
+import random
 
 FLOOR_WIDTH = 1020
 FLOOR_HEIGHT = 180
@@ -7,13 +8,11 @@ class Home(pygame.sprite.Sprite):
     def __init__(self, n: int):
         pygame.sprite.Sprite.__init__(self)
         self.floors = []
-        """
-        for i in n:
-            x = WIDTH/2
-            y = HEIGHT - FLOOR_HEIGHT + FLOOR_HEIGHT/2
-            floor = Floor(T)
-            self.floors.append(floor)
-        """
+        for i in range(n):
+            color = BLUE
+            x = (WIDTH-FLOOR_WIDTH)/2
+            y = FLOOR_HEIGHT*(i+1)
+            self.floors.append(Floor(random.choice(colors), x, y))
 
 class Floor(pygame.sprite.Sprite):
     def __init__(self, color, x, y):
