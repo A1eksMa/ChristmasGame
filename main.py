@@ -8,9 +8,18 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
 
-all_sprites = pygame.sprite.Group()
+sprites = pygame.sprite.Group()
+home = pygame.sprite.Group()
+
+floor_1 = Floor(BLUE, (WIDTH-FLOOR_WIDTH)/2, FLOOR_HEIGHT*1)
+floor_2 = Floor(GRAY, (WIDTH-FLOOR_WIDTH)/2, FLOOR_HEIGHT*2)
+floor_3 = Floor(BLUE, (WIDTH-FLOOR_WIDTH)/2, FLOOR_HEIGHT*3)
+home.add(floor_1)
+home.add(floor_2)
+home.add(floor_3)
+
 santa = Santa()
-all_sprites.add(santa)
+sprites.add(santa)
 
 # Цикл игры
 run = True
@@ -25,11 +34,13 @@ while run:
             run = False
 
     # Обновление
-    all_sprites.update()
+    home.update()
+    sprites.update()
 
     # Рендеринг
     screen.fill(BLACK)
-    all_sprites.draw(screen)
+    home.draw(screen)
+    sprites.draw(screen)
 
     # после отрисовки всего, переворачиваем экран
     pygame.display.flip()
