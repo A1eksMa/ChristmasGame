@@ -18,11 +18,11 @@ home.floors[0].add_room(180)
 home.floors[0].add_room(360)
 home.floors[0].add_room(600)
 home.floors[1].add_room(600)
-#home.floors[1].add_room(180)
-#home.floors[1].add_room(360)
+home.floors[1].add_room(180)
+home.floors[1].add_room(360)
 home.floors[2].add_room(300)
 home.floors[2].add_room(300)
-home.floors[2].add_room(540)
+#home.floors[2].add_room(540)
 
 for floor in home.floors:
     for room in floor.rooms:
@@ -48,7 +48,7 @@ while run:
     sprites.update()
 
     # Рендеринг
-    screen.fill(Colors.BLACK.value)
+    screen.fill((0, 0, 0))
     sprites.draw(screen)
 
     # после отрисовки всего, переворачиваем экран
