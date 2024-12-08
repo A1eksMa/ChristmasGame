@@ -12,58 +12,56 @@ class Room_size(Enum):
 
 room_sizes = [x.value for x in Room_size]
 
-class Home(pygame.sprite.Sprite):
-    def __init__(self, n: int):
-        pygame.sprite.Sprite.__init__(self)
-        self.floors = []
-        for i in range(n):
-            color = random.choice(colors)
-            x = (WIDTH-FLOOR_WIDTH)/2
-            y = FLOOR_HEIGHT*(i+1)
-            self.floors.append(Floor(color, x, y))
 
-class Floor(pygame.sprite.Sprite):
-    def __init__(self, color, x, y):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((FLOOR_WIDTH, FLOOR_HEIGHT))
-        self.image.fill(color)
-        self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
+class Home:
+    def __init__(self, x, y):
+        # Координаты левого верхнего угла дома
+        self.x = x
+        self.y = y
+        # этажи
+        self.floors = []
+
+    def add_floor(self):
+        floor = Floor(self.x, self.y + (FLOOR_HEIGHT) * (len(self.floors)))
+        self.floors.append(floor)
+
+    def __repr__ (self):
+        return f"Home: x {self.x}, y {self.y}, floors cnt {len(self.floors)}"
+
+
+class Floor():
+    def __init__(self, x, y):
+        # Координаты левого верхнего угла этажа
+        self.x = x
+        self.y = y
+        # Комнаты
         self.rooms = []
 
-        # generate_rooms
-        """
-        l = 0
-        lenghts = []
-        while l != FLOOR_WIDTH:
-            l_random = random.choice(room_sizes)
-            if FLOOR_WIDTH - (l + l_random) < Room_size.x1.value:
-                continue
-            else:
-                lenghts.append(l_random)
-                l+=l_random
-
-        """
-        lenghts = [540,540]
-        l = self.rect.x
-
-        for lenght in lenghts:
-            self.rooms.append(Room(random.choice(colors),
-                                   l,
-                                   self.rect.y,
-                                   lenght)
-                             )
-            l+=lenght
+    def add_room(self, l):
+        room = Room(self.x + sum([room.l for room in self.rooms]), self.y, l)
+        self.rooms.append(room)
+            
+    def __repr__ (self):
+        return f"Floor: x {self.x}, y {self.y}, rooms cnt {len(self.rooms)}"
+            
 
 class Room(pygame.sprite.Sprite):
-    def __init__(self, color, x, y, l):
+    def __init__(self, x, y, l):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((l, FLOOR_HEIGHT))
-        self.image.fill(color)
+        self.image.fill(random.choise(colors))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        
+        # Координаты левого верхнего угла этажа
+        self.x = x
+        self.y = y
+        # Длина комнаты
+        self.l = l
+
+    def __repr__ (self):
+        return f"Room: x {self.x}, y {self.y}, length {self.l}"
 
 
 class Stairway:
