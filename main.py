@@ -9,12 +9,25 @@ pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
 
 sprites = pygame.sprite.Group()
-home = pygame.sprite.Group()
 
-for floor in Home(3).floors:
-    home.add(floor)
+home = Home(30,180)
+home.add_floor()
+home.add_floor()
+home.add_floor()
+home.floors[0].add_room(180)
+home.floors[0].add_room(360)
+home.floors[0].add_room(600)
+home.floors[1].add_room(600)
+#home.floors[1].add_room(180)
+#home.floors[1].add_room(360)
+home.floors[2].add_room(300)
+home.floors[2].add_room(300)
+home.floors[2].add_room(540)
+
+for floor in home.floors:
     for room in floor.rooms:
-        home.add(room)
+        sprites.add(room)
+
 
 santa = Santa()
 sprites.add(santa)
@@ -32,12 +45,10 @@ while run:
             run = False
 
     # Обновление
-    home.update()
     sprites.update()
 
     # Рендеринг
     screen.fill(Colors.BLACK.value)
-    home.draw(screen)
     sprites.draw(screen)
 
     # после отрисовки всего, переворачиваем экран

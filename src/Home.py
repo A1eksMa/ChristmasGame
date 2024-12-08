@@ -40,20 +40,20 @@ class Floor():
     def add_room(self, l):
         room = Room(self.x + sum([room.l for room in self.rooms]), self.y, l)
         self.rooms.append(room)
-            
+
     def __repr__ (self):
         return f"Floor: x {self.x}, y {self.y}, rooms cnt {len(self.rooms)}"
-            
+
 
 class Room(pygame.sprite.Sprite):
     def __init__(self, x, y, l):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((l, FLOOR_HEIGHT))
-        self.image.fill(random.choise(colors))
+        self.image.fill(random.choice(colors))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-        
+
         # Координаты левого верхнего угла этажа
         self.x = x
         self.y = y
