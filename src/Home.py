@@ -37,9 +37,13 @@ class Floor():
         # Комнаты
         self.rooms = []
 
+        self.left_edge = self.x
+        self.right_edge = self.x
+
     def add_room(self, l):
-        room = Room(self.x + sum([room.l for room in self.rooms]), self.y, l)
+        room = Room(self.right_edge, self.y, l)
         self.rooms.append(room)
+        self.right_edge += l
 
     def __repr__ (self):
         return f"Floor: x {self.x}, y {self.y}, rooms cnt {len(self.rooms)}"

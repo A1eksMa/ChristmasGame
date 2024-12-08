@@ -29,7 +29,7 @@ for floor in home.floors:
         sprites.add(room)
 
 
-santa = Santa()
+santa = Santa(100, home.floors[1])
 sprites.add(santa)
 
 # Цикл игры
